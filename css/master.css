@@ -17,6 +17,7 @@
     font-size: 1.2em;
     border: none;
     outline-color: white;
+    cursor: pointer;
 }
 
 .stopwatch__buttons__button--start {
@@ -33,4 +34,12 @@
 
 .stopwatch__buttons__button--reset {
     background-color: white;
+}
+
+.table {
+    border: solid black 1px;
+}
+
+.divider {
+    background-color: red;
 }

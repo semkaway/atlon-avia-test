@@ -4,17 +4,19 @@ let pause = document.getElementById('buttonPause')
 let lap = document.getElementById('buttonLap')
 let reset = document.getElementById('buttonReset')
 let displayTime = document.getElementById('displayTime')
+let resultsTable = document.getElementById('resultsTable')
 let running = false
 let time = 0
+let lapNumber = 0
+let lapTime
 let offset
 let timer
-
-// console.log("displayTime: ", displayTime.innerHTML)
 
 function updateTime() {
     time += timePassed()
     let formatTime = formattedTime(time)
     displayTime.textContent = formatTime
+    return time
 }
 
 function timePassed() {
@@ -47,28 +49,41 @@ function formattedTime(inputTime) {
 
 function startCount() {
     if (!running) {
-        console.log("Start!!")
         offset = Date.now()
+        lapTime = updateTime()
+        console.log("start: ", formattedTime(lapTime))
         running = true
+        lap.disabled = false
         timer = setInterval(updateTime, 10)
     }
 }
 
 function pauseCount() {
-    console.log("Pause!!")
     running = false
+    lap.disabled = true
+    addLap()
     clearInterval(timer)
 }
 
 function addLap() {
-    console.log("Lap!!")
+    lapNumber++
+    let now = updateTime()
+    console.log(`now: ${formattedTime(now)} laptime: ${formattedTime(lapTime)}`)
+    let newLap = now - lapTime
+    lapTime = now
+    console.log("new laptime: ", formattedTime(lapTime))
+    resultsTable.innerHTML += `<tr><td>Круг ${lapNumber}</td><td>${formattedTime(now)}</td><td>${formattedTime(newLap)}</td></tr>`
 }
 
 function resetCount() {
-    console.log("Stop!!")
     running = false
+    lap.disabled = true
+    addLap()
     time = 0
+    lapNumber = 0
+    displayTime.textContent = "00:00:000"
     clearInterval(timer)
+    resultsTable.innerHTML += `<tr class="divider"><td></td><td></td><td></td></tr>`
 }
 
 start.addEventListener('click', startCount)
