@@ -1,0 +1,38 @@
+.stopwatch {
+    height: 225px;
+    width: 283px;
+    background-color: red;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.stopwatch__time {
+    font-size: 5em;
+    margin-bottom: 25px;
+}
+
+.stopwatch__buttons__button {
+    height: calc(283px/4.5);
+    width: calc(283px/4.5);
+    border-radius: 50%;
+    margin-left: 2px;
+    font-size: 1.2em;
+    border: none;
+    outline-color: white;
+}
+
+.stopwatch__buttons__button--start {
+    background-color: green;
+}
+
+.stopwatch__buttons__button--split {
+    background-color: blue;
+}
+
+.stopwatch__buttons__button--pause {
+    background-color: grey;
+}
+
+.stopwatch__buttons__button--reset {
+    background-color: white;
+}
