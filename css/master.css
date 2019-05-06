@@ -1,13 +1,11 @@
 .stopwatch {
     height: 225px;
     width: 283px;
-    background-color: red;
     margin: 0 auto;
-    text-align: center;
 }
 
 .stopwatch__time {
-    font-size: 5em;
+    font-size: 4.3em;
     margin-bottom: 25px;
 }
 
