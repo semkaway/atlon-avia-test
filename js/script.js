@@ -9,6 +9,7 @@ let running = false
 let time = 0
 let lapNumber = 0
 let lapTime
+let previousLap = 0
 let offset
 let timer
 
@@ -77,8 +78,19 @@ function addLap() {
     lapNumber++
     let now = updateTime()
     let newLap = now - lapTime
+    let lapDifference = 0
+    if (previousLap != 0) {
+        if (previousLap > newLap) { //minus
+            lapDifference = previousLap - newLap
+            lapDifference = `-${formattedTime(lapDifference)}`
+        } else if (previousLap < newLap) {
+            lapDifference = newLap - previousLap
+            lapDifference = formattedTime(lapDifference)
+        }
+    }
     lapTime = now
-    resultsTable.innerHTML += `<tr><td class="table__tableData">Круг ${lapNumber}</td><td class="table__tableData">${formattedTime(now)}</td><td class="table__tableData">${formattedTime(newLap)}</td></tr>`
+    previousLap = newLap
+    resultsTable.innerHTML += `<tr><td class="table__tableData">Круг ${lapNumber}</td><td class="table__tableData">${formattedTime(now)}</td><td class="table__tableData">${formattedTime(newLap)}</td><td class="table__tableData">${lapDifference}</td></tr>`
     resultsTable.style.display = "block"
 }
 
@@ -88,9 +100,10 @@ function resetCount() {
     addLap()
     time = 0
     lapNumber = 0
+    previousLap = 0
     displayTime.textContent = "00:00:000"
     clearInterval(timer)
-    resultsTable.innerHTML += `<tr class="table__divider"><td></td><td></td><td></td></tr>`
+    resultsTable.innerHTML += `<tr class="table__divider"><td></td><td></td><td></td><td></td></tr>`
     resultsTable.style.display = "block"
 }
 

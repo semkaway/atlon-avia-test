@@ -48,13 +48,14 @@ body {
 
 .table {
     display: none;
-    margin-top: 30px;
+    margin: 0 auto;
+    width: 30%;
     color: rgba(0, 0, 0, 0.7);
     background-color: rgba(255, 255, 255, 0.3);
 }
 
 .table__tableData {
-    width: calc(283px/3);
+    width: calc(30%/4);
 }
 
 .table__divider {
