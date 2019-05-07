@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo');
+html {
+    height: 100%;
+    font-family: 'Heebo', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding-top: 70px;
+    height: 100%;
+}
+
+#bg {
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 51% 95%, 0 69%);
+    background: rgb(195,34,34);
+    background: linear-gradient(0deg, rgba(195,34,34,0.7990546560421043) 0%, rgba(253,187,45,1) 54%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
 .stopwatch {
     height: 225px;
     width: 283px;
@@ -5,41 +28,36 @@
 }
 
 .stopwatch__time {
-    font-size: 4.3em;
-    margin-bottom: 25px;
+    font-size: 3.8em;
+    margin-bottom: 10px;
+    margin-top: 0;
+    color: white;
 }
 
 .stopwatch__buttons__button {
     height: calc(283px/4.5);
     width: calc(283px/4.5);
     border-radius: 50%;
-    margin-left: 2px;
+    margin-left: 4px;
     font-size: 1.2em;
     border: none;
     outline-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
 }
 
-.stopwatch__buttons__button--start {
-    background-color: green;
-}
-
-.stopwatch__buttons__button--lap {
-    background-color: blue;
-}
-
-.stopwatch__buttons__button--pause {
-    background-color: grey;
-}
-
-.stopwatch__buttons__button--reset {
-    background-color: white;
-}
-
 .table {
-    border: solid black 1px;
+    display: none;
+    margin-top: 30px;
+    color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
-.divider {
-    background-color: red;
+.table__tableData {
+    width: calc(283px/3);
+}
+
+.table__divider {
+    background-color: rgb(150, 89, 3);
+    height: 5px;
 }

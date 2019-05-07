@@ -26,6 +26,12 @@ function timePassed() {
     return difference
 }
 
+function disableButtons() {
+    lap.disabled = true
+    pause.disabled = true
+    reset.disabled = true
+}
+
 function formattedTime(inputTime) {
     let newTime = new Date(inputTime)
     let minutes = newTime.getMinutes().toString()
@@ -51,16 +57,18 @@ function startCount() {
     if (!running) {
         offset = Date.now()
         lapTime = updateTime()
-        console.log("start: ", formattedTime(lapTime))
         running = true
         lap.disabled = false
+        pause.disabled = false
+        reset.disabled = false
         timer = setInterval(updateTime, 10)
     }
 }
 
 function pauseCount() {
     running = false
-    lap.disabled = true
+    resultsTable.style.display = "block"
+    disableButtons()
     addLap()
     clearInterval(timer)
 }
@@ -68,22 +76,22 @@ function pauseCount() {
 function addLap() {
     lapNumber++
     let now = updateTime()
-    console.log(`now: ${formattedTime(now)} laptime: ${formattedTime(lapTime)}`)
     let newLap = now - lapTime
     lapTime = now
-    console.log("new laptime: ", formattedTime(lapTime))
-    resultsTable.innerHTML += `<tr><td>Круг ${lapNumber}</td><td>${formattedTime(now)}</td><td>${formattedTime(newLap)}</td></tr>`
+    resultsTable.innerHTML += `<tr><td class="table__tableData">Круг ${lapNumber}</td><td class="table__tableData">${formattedTime(now)}</td><td class="table__tableData">${formattedTime(newLap)}</td></tr>`
+    resultsTable.style.display = "block"
 }
 
 function resetCount() {
     running = false
-    lap.disabled = true
+    disableButtons()
     addLap()
     time = 0
     lapNumber = 0
     displayTime.textContent = "00:00:000"
     clearInterval(timer)
-    resultsTable.innerHTML += `<tr class="divider"><td></td><td></td><td></td></tr>`
+    resultsTable.innerHTML += `<tr class="table__divider"><td></td><td></td><td></td></tr>`
+    resultsTable.style.display = "block"
 }
 
 start.addEventListener('click', startCount)

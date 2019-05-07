@@ -6,18 +6,19 @@
         <link rel="stylesheet" href="css/master.css">
     </head>
     <body>
+        <div id="bg"></div>
         <div class="stopwatch">
             <p id="displayTime" class="stopwatch__time">00:00:000</p>
             <div class="stopwatch__buttons">
-                <button id="buttonStart" class="stopwatch__buttons__button stopwatch__buttons__button--start">Старт</button>
-                <button id="buttonPause" class="stopwatch__buttons__button stopwatch__buttons__button--pause">Пауза</button>
-                <button id="buttonReset" class="stopwatch__buttons__button stopwatch__buttons__button--reset">Стоп</button>
-                <button id="buttonLap" class="stopwatch__buttons__button stopwatch__buttons__button--lap" disabled>Круг</button>
+                <button id="buttonStart" class="stopwatch__buttons__button">Старт</button>
+                <button id="buttonPause" class="stopwatch__buttons__button" disabled>Пауза</button>
+                <button id="buttonReset" class="stopwatch__buttons__button" disabled>Стоп</button>
+                <button id="buttonLap" class="stopwatch__buttons__button" disabled>Круг</button>
             </div>
             <table id="resultsTable" class="table">
-                <th></th>
-                <th>Всего</th>
-                <th>Круг</th>
+                <th class="table__tableData"></th>
+                <th class="table__tableData">Всего</th>
+                <th class="table__tableData">Круг</th>
             </table>
         </div>
         <script type="text/javascript" src="js/script.js"></script>
